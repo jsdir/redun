@@ -38,7 +38,7 @@ def create_tar(tar_path: str, file_paths: Iterable[str]) -> File:
     tar_file = File(tar_path)
 
     with tar_file.open("wb") as out:
-        with tarfile.open(fileobj=out, mode="w|gz") as tar:
+        with tarfile.open(fileobj=out, mode="w|gz", dereference=True) as tar:
             for file_path in file_paths:
                 tar.add(file_path)
 
